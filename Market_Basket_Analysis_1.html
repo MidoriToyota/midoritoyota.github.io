@@ -13091,9 +13091,10 @@ div#notebook {
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Market-Basket-Analysis---Parte-1"><strong>Market Basket Analysis - Parte 1</strong><a class="anchor-link" href="#Market-Basket-Analysis---Parte-1">&#182;</a></h1><hr>
-<p><a href="mailto:midori.toyota@gmail.com" target="_blank"><img align="left" src="./Images/gmail.png" title="Me convide para seu time!"/></a><img align="left" src="./Images/espaco.png"/></p>
-<p><a href="https://www.linkedin.com/in/midoritoyota/" target="_blank"> <img align="left" src="./Images/linkedin.png" title="Conecte-se comigo!" /></a><img align="left" src="./Images/espaco.png"/></p>
-<p><a href="https://github.com/MidoriToyota" target="_blank"> <img align="left" src="./Images/github.png" title="Veja os source codes"/></a></p>
+<p><a href="https://midoritoyota.netlify.app/" target="_blank"><img align="left" src="./images/portfolio.png" title="See my portfolio!"/></a><img align="left" src="./images/espaco.png"/></p>
+<p><a href="mailto:midori.toyota@gmail.com" target="_blank"><img align="left" src="./images/gmail.png" title="Contact me!"/></a><img align="left" src="./images/espaco.png"/></p>
+<p><a href="https://www.linkedin.com/in/midoritoyota/" target="_blank"> <img align="left" src="./images/linkedin.png" title="Add me on linkedin!" /></a><img align="left" src="./images/espaco.png"/></p>
+<p><a href="https://github.com/MidoriToyota" target="_blank"> <img align="left" src="./images/github.png" title="Follow me on github!"/></a></p>
 <p><br/><br/></p>
 <h2 id="Defini&#231;&#227;o-do-problema"><strong>Defini&#231;&#227;o do problema</strong><a class="anchor-link" href="#Defini&#231;&#227;o-do-problema">&#182;</a></h2><p>Nesse projeto, utilizarei os dados anônimos fornecidos pelo instacart para prever quais produtos adquiridos anteriormente estarão no próximo pedido de um usuário. O instacart é um aplicativo de compras online, onde os compradores selecionam os produtos no app e a entrega é feita na loja mais próxima à você.</p>
 <p>Esta é a parte 1 (análise exploratória) de um dos projetos de conclusão do módulo Business Analytics da Formação Cientista de Dados da Data Science Academy (DSA)</p>
@@ -13120,7 +13121,7 @@ div#notebook {
 <div class="prompt input_prompt">In&nbsp;[0]:</div>
 <div class="inner_cell">
     <div class="input_area">
-<div class=" highlight hl-r"><pre><span></span><span class="c1"># Carregando arquivos csv que estão no google drive</span>
+<div class=" highlight hl-r"><pre><span></span><span class="c1"># Carregando arquivos csv que estão no google drive - caso use google colab</span>
 <span class="nf">system</span><span class="p">(</span><span class="s">&quot;gdown --id 1_81hIRMXbE5IHIoJfEmL0NH9Yg0SkiaW&quot;</span><span class="p">)</span> <span class="c1"># orders.csv</span>
 <span class="nf">system</span><span class="p">(</span><span class="s">&quot;gdown --id 1lCg5HbXqiHXyHWeXgzqbQn59ogCLJ3N3&quot;</span><span class="p">)</span> <span class="c1"># products.csv</span>
 <span class="nf">system</span><span class="p">(</span><span class="s">&quot;gdown --id 1KlUykoQr9lnCgC--nOkNjQmmn0tAbSOH&quot;</span><span class="p">)</span> <span class="c1"># aisles.csv</span>
@@ -13139,11 +13140,11 @@ div#notebook {
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># Carregado datasets</span>
-<span class="n">orders</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;orders.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
-<span class="n">products</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;products.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
-<span class="n">aisles</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;aisles.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
-<span class="n">departments</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;departments.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
-<span class="n">data_train</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;order_products__train.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">orders</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/orders.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">products</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/products.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">aisles</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/aisles.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">departments</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/departments.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
+<span class="n">data_train</span> <span class="o">=</span> <span class="nf">read.csv</span><span class="p">(</span><span class="s">&quot;data/order_products__train.csv&quot;</span><span class="p">,</span> <span class="n">sep</span> <span class="o">=</span> <span class="s">&quot;,&quot;</span><span class="p">)</span>
 </pre></div>
 
     </div>
@@ -17619,9 +17620,10 @@ height=420
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
-<p><a href="mailto:midori.toyota@gmail.com" target="_blank"><img align="left" src="./Images/gmail.png" title="Me convide para seu time!"/></a><img align="left" src="./Images/espaco.png"/></p>
-<p><a href="https://www.linkedin.com/in/midoritoyota/" target="_blank"> <img align="left" src="./Images/linkedin.png" title="Conecte-se comigo!" /></a><img align="left" src="./Images/espaco.png"/></p>
-<p><a href="https://github.com/MidoriToyota" target="_blank"> <img align="left" src="./Images/github.png" title="Veja os source codes"/></a></p>
+<p><a href="https://midoritoyota.netlify.app/" target="_blank"><img align="left" src="./images/portfolio.png" title="See my portfolio!"/></a><img align="left" src="./images/espaco.png"/></p>
+<p><a href="mailto:midori.toyota@gmail.com" target="_blank"><img align="left" src="./images/gmail.png" title="Contact me!"/></a><img align="left" src="./images/espaco.png"/></p>
+<p><a href="https://www.linkedin.com/in/midoritoyota/" target="_blank"> <img align="left" src="./images/linkedin.png" title="Add me on linkedin!" /></a><img align="left" src="./images/espaco.png"/></p>
+<p><a href="https://github.com/MidoriToyota" target="_blank"> <img align="left" src="./images/github.png" title="Follow me on github!"/></a></p>
 <p><br/><br/></p>
 
 </div>
