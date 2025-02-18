@@ -1,5 +1,5 @@
-# Projects
+# Portfolio de projetos
 
-This repository hosts the html files of projects that I display in my portfolio in:
+Esse repositório tem o código que usei para gerar meu portolio
 
-https://midoritoyota.netlify.app/
+https://midoritoyota.com
